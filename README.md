@@ -10,3 +10,6 @@ En la línea de comando vaya al directorio raíz (aquel con el pom.xml) y ejecut
 - mvn clean package
 - cd target
 - java -jar foto_ws-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+
+### Servidor de prueba
+Utilice: https://github.com/dordonez-ute-apdist/WebSockets_Server_Fotos

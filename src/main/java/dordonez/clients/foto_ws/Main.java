@@ -71,7 +71,7 @@ public class Main {
 	}
 
 	private static void testGetById() throws Exception {
-		FotoMessage fotoMsg = new FotoMessage(FotoMessage.GETBYID, "8", null);
+		FotoMessage fotoMsg = new FotoMessage(FotoMessage.GETBYID, "1", null);
 		String json = obj2json.writeValueAsString(fotoMsg);
 		System.out.println(json);
 		

@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Built-By: ordon
-Build-Jdk: 15
-Class-Path: Java-WebSocket-1.5.1.jar jackson-databind-2.12.3.jar jackson
- -annotations-2.12.3.jar jackson-core-2.12.3.jar slf4j-api-1.7.31.jar sl
- f4j-simple-1.7.31.jar
-Main-Class: dordonez.clients.foto_ws.Main
-Created-By: Maven Integration for Eclipse
-

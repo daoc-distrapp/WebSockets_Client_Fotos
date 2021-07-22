@@ -27,19 +27,18 @@ public class Main {
 			@Override
 			public void onMessage(String message) {
 				try {
-					WsMessage wsMsg = objMap.readValue(message, WsMessage.class);
-					switch (wsMsg.getType()) {
+					FotoMessage fotoMsg = objMap.readValue(message, FotoMessage.class);
+					switch (fotoMsg.getType()) {
 					case "GETLIST":
-						System.out.println(wsMsg.getListado());
+						System.out.println(fotoMsg.getListado());
 						break;
 					case "GETBYID":
-						Foto foto = wsMsg.getFoto();
+						Foto foto = fotoMsg.getFoto();
 						if(foto == null) {
 							System.out.println("NO hay foto con esa ID !!!");
 							break;
 						}
 						System.out.println(foto);
-						System.out.println(foto.getFotoB64());
 						byte[] decodedBytes = Base64.getDecoder().decode(foto.getFotoB64());
 						Path path = Paths.get("C:\\Users\\ordon\\Downloads\\myfile.jpg");
 						Files.write(path, decodedBytes);						
@@ -72,8 +71,8 @@ public class Main {
 	}
 
 	private static void testGetById() throws Exception {
-		WsMessage wsMsg = new WsMessage(WsMessage.GETBYID, "8", null);
-		String json = obj2json.writeValueAsString(wsMsg);
+		FotoMessage fotoMsg = new FotoMessage(FotoMessage.GETBYID, "8", null);
+		String json = obj2json.writeValueAsString(fotoMsg);
 		System.out.println(json);
 		
 		wsClient.send(json);
@@ -83,8 +82,8 @@ public class Main {
 	}	
 	
 	private static void testGetList() throws Exception {
-		WsMessage wsMsg = new WsMessage(WsMessage.GETLIST, "", null);
-		String json = obj2json.writeValueAsString(wsMsg);
+		FotoMessage fotoMsg = new FotoMessage(FotoMessage.GETLIST, "", null);
+		String json = obj2json.writeValueAsString(fotoMsg);
 		System.out.println(json);
 		
 		wsClient.send(json);
@@ -100,8 +99,8 @@ public class Main {
 		byte[] bytes = Files.readAllBytes(Paths.get("dog05.jpg"));
 		foto.setFotoB64(Base64.getEncoder().encodeToString(bytes));
 		
-		WsMessage wsMsg = new WsMessage(WsMessage.SAVE, "", foto);
-		String json = obj2json.writeValueAsString(wsMsg);
+		FotoMessage fotoMsg = new FotoMessage(FotoMessage.SAVE, "", foto);
+		String json = obj2json.writeValueAsString(fotoMsg);
 		System.out.println(json);
 		
 		wsClient.send(json);
